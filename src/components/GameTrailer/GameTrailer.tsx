@@ -1,5 +1,4 @@
 import React from 'react';
-import { Spinner } from '@chakra-ui/react';
 import { useTrailers } from '../../hooks/useTrailers';
 
 type Props = {
@@ -13,17 +12,19 @@ export const GameTrailer: React.FC<Props> = ({ id }) => {
     return error.message;
   }
 
+  if (isLoading) {
+    return null;
+  }
+
   const first = data?.results[0];
 
   return (
     <>
-      {isLoading ? <Spinner /> : (
-        <video
-          src={first?.data[480]}
-          poster={first?.preview}
-          controls
-        />
-      )}
+      <video
+        src={first?.data[480]}
+        poster={first?.preview}
+        controls
+      />
     </>
   );
 };

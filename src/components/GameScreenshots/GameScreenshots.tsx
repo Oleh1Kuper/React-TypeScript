@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, SimpleGrid, Spinner } from '@chakra-ui/react';
+import { Image, SimpleGrid } from '@chakra-ui/react';
 import useScreenshots from '../../hooks/useScreenshots';
 
 type Props = {
@@ -10,7 +10,7 @@ export const GameScreenshots: React.FC<Props> = ({ id }) => {
   const { data, isLoading, error } = useScreenshots(id);
 
   if (isLoading) {
-    return <Spinner />;
+    return null;
   }
 
   if (error) {
